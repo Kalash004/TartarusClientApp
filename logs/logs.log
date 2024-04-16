@@ -64,3 +64,52 @@ EOFError: EOF when reading a line
  
 End|
 
+ 2024-04-16 22:05:00 - Exception happened : invalid literal for int() with base 10: 'dsa' | traceback: Traceback (most recent call last):
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Controller.py", line 31, in loop
+    action = self.display_table_menu(action_table.action_menu, "Action menu")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Controller.py", line 48, in display_table_menu
+    choice = DisplayMenu(menu).execute()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\commands\InputOutputCommands.py", line 27, in execute
+    return io.display_and_obtain_choices(self.menu)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\InputOutput.py", line 24, in display_and_obtain_choices
+    choice = int(choice) - 1
+             ^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'dsa'
+ 
+End|
+
+ 2024-04-16 22:09:23 - Exception happened : Failed to connect to 127.0.0.1 on port 2004: [WinError 10061] No connection could be made because the target machine actively refused it | traceback: Traceback (most recent call last):
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Connector.py", line 53, in connect_to_server
+    client_socket.connect((self.server_address, self.server_port))
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Controller.py", line 32, in loop
+    resp: bytes = action_table.action(action)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\models\ActionTable.py", line 19, in action
+    return self.action_menu[action](self.table_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\models\ActionTable.py", line 31, in get_all_request
+    resp = GetAll(table).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\commands\ConnectorCommands.py", line 29, in execute
+    return con.get_all(self.table)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Connector.py", line 19, in get_all
+    resp = self.send_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Connector.py", line 42, in send_request
+    connection = self.connect_to_server()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Connector.py", line 56, in connect_to_server
+    raise Exception(f"Failed to connect to {self.server_address} on port {self.server_port}: {e}")
+Exception: Failed to connect to 127.0.0.1 on port 2004: [WinError 10061] No connection could be made because the target machine actively refused it
+ 
+End|
+

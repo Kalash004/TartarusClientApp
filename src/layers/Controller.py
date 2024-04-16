@@ -13,10 +13,10 @@ class Controller(metaclass=SingletonMeta):
         self.table_menu = {
             "Admin users": ActionTable("admin_users", self.post_request_data_admin_users, self.update_request_data_admin_users),
             "Office users": ActionTable("office_users", self.post_request_data_office_users, self.update_request_data_office_users),
-            "Days": ActionTable("days", self.not_implemeneted, self.not_implemeneted),
-            "System messages": ActionTable("system_messages", self.not_implemeneted, self.not_implemeneted),
-            "System logins": ActionTable("system_log_ins", self.not_implemeneted, self.not_implemeneted),
-            "Enterences to office": ActionTable("enterences_to_office", self.not_implemeneted, self.not_implemeneted)
+            # "Days": ActionTable("days", self.not_implemeneted, self.not_implemeneted),
+            # "System messages": ActionTable("system_messages", self.not_implemeneted, self.not_implemeneted),
+            # "System logins": ActionTable("system_log_ins", self.not_implemeneted, self.not_implemeneted),
+            # "Enterences to office": ActionTable("enterences_to_office", self.not_implemeneted, self.not_implemeneted)
         }
 
     def start(self):
