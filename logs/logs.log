@@ -1,0 +1,66 @@
+
+ 2024-04-16 08:37:56 - Exception happened : Failed to connect to 127.0.0.1 on port 2004: [WinError 10061] No connection could be made because the target machine actively refused it | traceback: Traceback (most recent call last):
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Connector.py", line 53, in connect_to_server
+    client_socket.connect((self.server_address, self.server_port))
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Controller.py", line 32, in loop
+    resp: bytes = action_table.action(action)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\models\ActionTable.py", line 19, in action
+    return self.action_menu[action](self.table_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\models\ActionTable.py", line 31, in get_all_request
+    resp = GetAll(table).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\commands\ConnectorCommands.py", line 29, in execute
+    return con.get_all(self.table)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Connector.py", line 19, in get_all
+    resp = self.send_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Connector.py", line 42, in send_request
+    connection = self.connect_to_server()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Connector.py", line 56, in connect_to_server
+    raise Exception(f"Failed to connect to {self.server_address} on port {self.server_port}: {e}")
+Exception: Failed to connect to 127.0.0.1 on port 2004: [WinError 10061] No connection could be made because the target machine actively refused it
+ 
+End|
+
+ 2024-04-16 08:38:17 - Exception happened : exceptions must derive from BaseException | traceback: Traceback (most recent call last):
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Controller.py", line 32, in loop
+    resp: bytes = action_table.action(action)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\models\ActionTable.py", line 19, in action
+    return self.action_menu[action](self.table_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\models\ActionTable.py", line 48, in update
+    data = self.update_data_req()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Controller.py", line 95, in not_implemeneted
+    raise NotImplemented
+TypeError: exceptions must derive from BaseException
+ 
+End|
+
+ 2024-04-16 11:03:32 - Exception happened : EOF when reading a line | traceback: Traceback (most recent call last):
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Controller.py", line 29, in loop
+    table = self.display_table_menu(self.table_menu, "Table menu")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\Controller.py", line 48, in display_table_menu
+    choice = DisplayMenu(menu).execute()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\commands\InputOutputCommands.py", line 27, in execute
+    return io.display_and_obtain_choices(self.menu)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kalas\Programming\Python\ClientForTartarus\src\layers\InputOutput.py", line 23, in display_and_obtain_choices
+    choice = input(finish_str)
+             ^^^^^^^^^^^^^^^^^
+EOFError: EOF when reading a line
+ 
+End|
+

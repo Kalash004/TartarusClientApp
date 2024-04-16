@@ -1,5 +1,8 @@
+import traceback
+
 from src.AnswerParser import AnswerParser
 from src.commands.InputOutputCommands import DisplayError, DisplayMenu, DisplayMessage, Clear, Start, DisplayData, Ask
+from src.logger.MyLogger import MyLogger
 from src.models.ActionTable import ActionTable
 from src.utils.SingletonMeta import SingletonMeta
 
@@ -35,6 +38,8 @@ class Controller(metaclass=SingletonMeta):
                 if data_list is not None:
                     DisplayData(data_list, table).execute()
             except Exception as e:
+                tb = traceback.format_exc()
+                MyLogger().log_exception(e, tb)
                 DisplayError(e).execute()
 
     @staticmethod
@@ -46,7 +51,6 @@ class Controller(metaclass=SingletonMeta):
 
     @staticmethod
     def post_request_data_admin_users():
-        # TODO: Ask for ID/NONE, name, surename, password
         Clear().execute()
         isntance_id = None
         name = Ask("Please write name of the user: ").execute()
