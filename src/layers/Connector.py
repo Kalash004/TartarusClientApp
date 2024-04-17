@@ -1,13 +1,14 @@
 import socket
 
+from src.config_loader.ConfigLoader import ConfigLoader
 from src.utils.SingletonMeta import SingletonMeta
 
 
 class Connector(metaclass=SingletonMeta):
     def __init__(self):
-        self.apikey = "apitestkey1"
-        self.server_address = "127.0.0.1"
-        self.server_port = 2004
+        self.apikey = ConfigLoader().auth_conf_loader.get_auth_api_keys()
+        self.server_address = ConfigLoader().api_conf_loader.get_host()
+        self.server_port = ConfigLoader().api_conf_loader.get_port()
 
     def post(self, table, data):
         request = f"APIKEY={self.apikey};EVENT=POST;TABLE={table};DATA=[{data}]"
